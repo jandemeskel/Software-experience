@@ -1,0 +1,411 @@
+% % ----------------------------- %
+% % formatting data from textfile %
+% % ----------------------------- %
+% 
+%  MC_Sweeps = reshape(MC_Sweeps_Raw',[],10);
+%  
+%   NetMag_H010 = reshape(NetMag_H010_Raw',[],10);
+%   NetMag_H020 = reshape(NetMag_H020_Raw',[],10);
+%   NetMag_H030 = reshape(NetMag_H030_Raw',[],10);
+%   NetMag_H040 = reshape(NetMag_H040_Raw',[],10);
+%   NetMag_H050 = reshape(NetMag_H050_Raw',[],10);
+%   NetMag_H060 = reshape(NetMag_H060_Raw',[],10);
+%   NetMag_H070 = reshape(NetMag_H070_Raw',[],10);
+%   NetMag_H080 = reshape(NetMag_H080_Raw',[],10);
+%   NetMag_H090 = reshape(NetMag_H090_Raw',[],10);
+%   NetMag_H10 = reshape(NetMag_H10_Raw',[],10);
+%    
+%   dimE_H010 = reshape(dimE_H010_Raw',[],10);
+%   dimE_H020 = reshape(dimE_H020_Raw',[],10);
+%   dimE_H030 = reshape(dimE_H030_Raw',[],10);
+%   dimE_H040 = reshape(dimE_H040_Raw',[],10);
+%   dimE_H050 = reshape(dimE_H050_Raw',[],10);
+%   dimE_H060 = reshape(dimE_H060_Raw',[],10);
+%   dimE_H070 = reshape(dimE_H070_Raw',[],10);
+%   dimE_H080 = reshape(dimE_H080_Raw',[],10);
+%   dimE_H090 = reshape(dimE_H090_Raw',[],10);
+%   dimE_H10 = reshape(dimE_H10_Raw',[],10);
+%   
+%   n = 1;
+% while (n < 57)
+%     
+%   AvgNetMag_H010(n,:) = mean(NetMag_H010(n,:));
+%   AvgNetMag_H020(n,:) = mean(NetMag_H020(n,:));
+%   AvgNetMag_H030(n,:) = mean(NetMag_H030(n,:));
+%   AvgNetMag_H040(n,:) = mean(NetMag_H040(n,:));
+%   AvgNetMag_H050(n,:) = mean(NetMag_H050(n,:));
+%   AvgNetMag_H060(n,:) = mean(NetMag_H060(n,:));
+%   AvgNetMag_H070(n,:) = mean(NetMag_H070(n,:));
+%   AvgNetMag_H080(n,:) = mean(NetMag_H080(n,:));
+%   AvgNetMag_H090(n,:) = mean(NetMag_H090(n,:));
+%   AvgNetMag_H10(n,:) = mean(NetMag_H10(n,:));
+%   
+%   AvgdimE_H010(n,:) = mean(dimE_H010(n,:));
+%   AvgdimE_H020(n,:) = mean(dimE_H020(n,:));
+%   AvgdimE_H030(n,:) = mean(dimE_H030(n,:));
+%   AvgdimE_H040(n,:) = mean(dimE_H040(n,:));
+%   AvgdimE_H050(n,:) = mean(dimE_H050(n,:));
+%   AvgdimE_H060(n,:) = mean(dimE_H060(n,:));
+%   AvgdimE_H070(n,:) = mean(dimE_H070(n,:));
+%   AvgdimE_H080(n,:) = mean(dimE_H080(n,:));
+%   AvgdimE_H090(n,:) = mean(dimE_H090(n,:));
+%   AvgdimE_H10(n,:) = mean(dimE_H10(n,:));
+% %     
+%   n = n + 1;
+%     
+% end
+% 
+% figure(1);
+% %plot (MC_Sweeps(:,1), AvgNetMag_010, '-yp');
+% hold on
+%  plot(MC_Sweeps(:,1), AvgNetMag_H020,'-bx');
+%  plot (MC_Sweeps(:,1), AvgNetMag_H030, '-rs');
+%  plot (MC_Sweeps(:,1), AvgNetMag_H040, '-kd');
+%  plot (MC_Sweeps(:,1), AvgNetMag_H050, '-go');
+%  plot (MC_Sweeps(:,1), AvgNetMag_H060, '-c.');
+%  plot (MC_Sweeps(:,1), AvgNetMag_H070, '-m^');
+%  cut_off_my = [ 1.0; 0.8; 0.6; 0.4; 0.2; 0.00; -0.2; -0.4; -0.6; -0.8; -1.0];
+%  cut_off_mx = [140; 140; 140; 140; 140; 140; 140; 140; 140; 140; 140;];
+% % plot(cut_off_mx, cut_off_my, '--k');  
+% hold off
+% xlabel('Number of MC Sweeps'); ylabel('Average Net Magnetisation'); 
+% xticks([0 50 100 150 200 250 300 350 400 450 500 550 600]);
+% legend('Beta 0.20', 'Beta 0.30', 'Beta 0.40', 'Beta 0.50', 'Beta 0.60', 'Beta 0.70');
+% 
+%  % ----------------------------------------- %
+%  % Plotting Dimensionless energy / MC sweeps %
+%  % ----------------------------------------- %
+% 
+% figure(2);
+% %plot (MC_Sweeps(:,1), AvgdimE_010, '-yp');
+% hold on
+%  plot (MC_Sweeps(:,1), (AvgdimE_H020./2),'-bx');
+%  plot (MC_Sweeps(:,1), (AvgdimE_H030./2), '-rs');
+%  plot (MC_Sweeps(:,1), (AvgdimE_H040./2), '-kd');
+%  plot (MC_Sweeps(:,1), (AvgdimE_H050./2), '-go');
+%  plot (MC_Sweeps(:,1), (AvgdimE_H060./2), '-c.');
+%  plot (MC_Sweeps(:,1), (AvgdimE_H070./2), '-m^');
+%  cut_off_ey = [-2; -1.8; -1.6; -1.4; -1.2; -1.0; -0.8; -0.6; -0.4; -0.2; 0.0; 0.2; 0.4; 0.6; 0.8; 1.0; 1.2; 1.4; 1.6; 1.8; 2.0];
+%  cut_off_ex = [140; 140; 140; 140; 140; 140; 140; 140; 140; 140;140; 140; 140; 140; 140; 140; 140; 140; 140; 140;140; ];
+%  %plot(cut_off_ex, cut_off_ey, '--k');    
+% hold off
+% xlabel('Number of MC Sweeps'); ylabel('Average Dimensionless energy'); 
+% xticks([0 50 100 150 200 250 300 350 400 450 500 550 600]);     
+% legend('Beta 0.20', 'Beta 0.30', 'Beta 0.40', 'Beta 0.50', 'Beta 0.60', 'Beta 0.70'); 
+
+
+% ----------------------------- %
+% formatting data from textfile %
+% ----------------------------- %
+
+ MC_Sweeps = reshape(MC_Sweeps_Raw',[],10);
+ 
+  NetMag_010 = reshape(NetMag_010_Raw',[],10);
+  NetMag_020 = reshape(NetMag_020_Raw',[],10);
+  NetMag_030 = reshape(NetMag_030_Raw',[],10);
+  NetMag_040 = reshape(NetMag_040_Raw',[],10);
+  NetMag_050 = reshape(NetMag_050_Raw',[],10);
+  NetMag_060 = reshape(NetMag_060_Raw',[],10);
+  NetMag_070 = reshape(NetMag_070_Raw',[],10);
+  NetMag_080 = reshape(NetMag_080_Raw',[],10);
+  NetMag_090 = reshape(NetMag_090_Raw',[],10);
+  NetMag_10 = reshape(NetMag_10_Raw',[],10);
+   
+  dimE_010 = reshape(dimE_010_Raw',[],10);
+  dimE_020 = reshape(dimE_020_Raw',[],10);
+  dimE_030 = reshape(dimE_030_Raw',[],10);
+  dimE_040 = reshape(dimE_040_Raw',[],10);
+  dimE_050 = reshape(dimE_050_Raw',[],10);
+  dimE_060 = reshape(dimE_060_Raw',[],10);
+  dimE_070 = reshape(dimE_070_Raw',[],10);
+  dimE_080 = reshape(dimE_080_Raw',[],10);
+  dimE_090 = reshape(dimE_090_Raw',[],10);
+  dimE_10 = reshape(dimE_10_Raw',[],10);
+  
+ % ---------------------------------- %
+ %  Average of NetMag configurations  %
+ % ---------------------------------- %
+ 
+ Trans_NetMag_010 = NetMag_010(16:end,:);
+ Trans_NetMag_020 = NetMag_020(16:end,:);
+ Trans_NetMag_030 = NetMag_030(16:end,:);
+ Trans_NetMag_040 = NetMag_040(16:end,:);
+ Trans_NetMag_050 = NetMag_050(16:end,:);
+ Trans_NetMag_060 = NetMag_060(16:end,:);
+ Trans_NetMag_070 = NetMag_070(16:end,:);
+ Trans_NetMag_080 = NetMag_080(16:end,:);
+ Trans_NetMag_090 = NetMag_090(16:end,:);
+ Trans_NetMag_10 = NetMag_10(16:end,:);
+ 
+n = 1;
+while (n < 42)
+    
+  Trans_AvgNetMag_010(n,:) = mean(Trans_NetMag_010(n,:));
+  Trans_AvgNetMag_020(n,:) = mean(Trans_NetMag_020(n,:));
+  Trans_AvgNetMag_030(n,:) = mean(Trans_NetMag_030(n,:));
+  Trans_AvgNetMag_040(n,:) = mean(Trans_NetMag_040(n,:));
+  Trans_AvgNetMag_050(n,:) = mean(Trans_NetMag_050(n,:));
+  Trans_AvgNetMag_060(n,:) = mean(Trans_NetMag_060(n,:));
+  Trans_AvgNetMag_070(n,:) = mean(Trans_NetMag_070(n,:));
+  Trans_AvgNetMag_080(n,:) = mean(Trans_NetMag_080(n,:));
+  Trans_AvgNetMag_090(n,:) = mean(Trans_NetMag_090(n,:));
+  Trans_AvgNetMag_10(n,:) = mean(Trans_NetMag_10(n,:));
+ 
+  n = n + 1;
+ 
+end
+ 
+AvgM_010 = mean(Trans_AvgNetMag_010(:,1));
+AvgM_020 = mean(Trans_AvgNetMag_020(:,1));
+AvgM_030 = mean(Trans_AvgNetMag_030(:,1));
+AvgM_040 = mean(Trans_AvgNetMag_040(:,1)); 
+AvgM_050 = mean(Trans_AvgNetMag_050(:,1));
+AvgM_060 = mean(Trans_AvgNetMag_060(:,1));
+AvgM_070 = mean(Trans_AvgNetMag_070(:,1));
+AvgM_080 = mean(Trans_AvgNetMag_080(:,1));
+AvgM_090 = mean(Trans_AvgNetMag_090(:,1));
+AvgM_10 = mean(Trans_AvgNetMag_10(:,1));
+
+ % ------------------------------------------ %
+ %  Average of NetMag squared configurations  %
+ % ------------------------------------------ %
+ 
+Trans_NetMag_squared_010 = (Trans_NetMag_010 .* Trans_NetMag_010);
+Trans_NetMag_squared_020 = (Trans_NetMag_020 .* Trans_NetMag_020);
+Trans_NetMag_squared_030 = (Trans_NetMag_030 .* Trans_NetMag_030);
+Trans_NetMag_squared_040 = (Trans_NetMag_040 .* Trans_NetMag_040);
+Trans_NetMag_squared_050 = (Trans_NetMag_050 .* Trans_NetMag_050);
+Trans_NetMag_squared_060 = (Trans_NetMag_060 .* Trans_NetMag_060);
+Trans_NetMag_squared_070 = (Trans_NetMag_070 .* Trans_NetMag_070);
+Trans_NetMag_squared_080 = (Trans_NetMag_080 .* Trans_NetMag_080);
+Trans_NetMag_squared_090 = (Trans_NetMag_090 .* Trans_NetMag_090);
+Trans_NetMag_squared_10 = (Trans_NetMag_10 .* Trans_NetMag_10);
+
+ i = 1;
+ while (i < 42)
+    
+  Trans_AvgNetMag_squared_010(i,:) = mean(Trans_NetMag_squared_010(i,:));
+  Trans_AvgNetMag_squared_020(i,:) = mean(Trans_NetMag_squared_020(i,:));
+  Trans_AvgNetMag_squared_030(i,:) = mean(Trans_NetMag_squared_030(i,:));
+  Trans_AvgNetMag_squared_040(i,:) = mean(Trans_NetMag_squared_040(i,:));
+  Trans_AvgNetMag_squared_050(i,:) = mean(Trans_NetMag_squared_050(i,:));
+  Trans_AvgNetMag_squared_060(i,:) = mean(Trans_NetMag_squared_060(i,:));
+  Trans_AvgNetMag_squared_070(i,:) = mean(Trans_NetMag_squared_070(i,:));
+  Trans_AvgNetMag_squared_080(i,:) = mean(Trans_NetMag_squared_080(i,:));
+  Trans_AvgNetMag_squared_090(i,:) = mean(Trans_NetMag_squared_090(i,:));
+  Trans_AvgNetMag_squared_10(i,:) = mean(Trans_NetMag_squared_10(i,:));
+ 
+  i = i + 1;
+ 
+end
+
+AvgMsquared_010 = mean(Trans_AvgNetMag_squared_010(:,1));
+AvgMsquared_020 = mean(Trans_AvgNetMag_squared_020(:,1));
+AvgMsquared_030 = mean(Trans_AvgNetMag_squared_030(:,1));
+AvgMsquared_040 = mean(Trans_AvgNetMag_squared_040(:,1)); 
+AvgMsquared_050 = mean(Trans_AvgNetMag_squared_050(:,1));
+AvgMsquared_060 = mean(Trans_AvgNetMag_squared_060(:,1));
+AvgMsquared_070 = mean(Trans_AvgNetMag_squared_070(:,1));
+AvgMsquared_080 = mean(Trans_AvgNetMag_squared_080(:,1));
+AvgMsquared_090 = mean(Trans_AvgNetMag_squared_090(:,1));
+AvgMsquared_10 = mean(Trans_AvgNetMag_squared_10(:,1));
+
+ % ---------------------------------- %
+ %  Average of energy configurations  %
+ % ---------------------------------- %
+ 
+ Trans_dimE_010 = dimE_010(16:end,:);
+ Trans_dimE_020 = dimE_020(16:end,:);
+ Trans_dimE_030 = dimE_030(16:end,:);
+ Trans_dimE_040 = dimE_040(16:end,:);
+ Trans_dimE_050 = dimE_050(16:end,:);
+ Trans_dimE_060 = dimE_060(16:end,:);
+ Trans_dimE_070 = dimE_070(16:end,:);
+ Trans_dimE_080 = dimE_080(16:end,:);
+ Trans_dimE_090 = dimE_090(16:end,:);
+ Trans_dimE_10 = dimE_10(16:end,:);
+ 
+  j = 1;
+ while (j < 42)
+     Trans_AvgdimE_010(j,:) = mean(Trans_dimE_010(j,:));
+     Trans_AvgdimE_020(j,:) = mean(Trans_dimE_020(j,:));
+     Trans_AvgdimE_030(j,:) = mean(Trans_dimE_030(j,:));
+     Trans_AvgdimE_040(j,:) = mean(Trans_dimE_040(j,:));
+     Trans_AvgdimE_050(j,:) = mean(Trans_dimE_050(j,:));
+     Trans_AvgdimE_060(j,:) = mean(Trans_dimE_060(j,:));
+     Trans_AvgdimE_070(j,:) = mean(Trans_dimE_070(j,:));
+     Trans_AvgdimE_080(j,:) = mean(Trans_dimE_080(j,:));
+     Trans_AvgdimE_090(j,:) = mean(Trans_dimE_090(j,:));
+     Trans_AvgdimE_10(j,:) = mean(Trans_dimE_10(j,:));
+     j = j + 1;
+ end
+ 
+ AvgEJ_010 = mean(Trans_AvgdimE_010(:,1));
+ AvgEJ_020 = mean(Trans_AvgdimE_020(:,1));
+ AvgEJ_030 = mean(Trans_AvgdimE_030(:,1));
+ AvgEJ_040 = mean(Trans_AvgdimE_040(:,1));
+ AvgEJ_050 = mean(Trans_AvgdimE_050(:,1));
+ AvgEJ_060 = mean(Trans_AvgdimE_060(:,1));
+ AvgEJ_070 = mean(Trans_AvgdimE_070(:,1));
+ AvgEJ_080 = mean(Trans_AvgdimE_080(:,1));
+ AvgEJ_090 = mean(Trans_AvgdimE_090(:,1));
+ AvgEJ_10 = mean(Trans_AvgdimE_10(:,1));
+ 
+ % ------------------------------------------ %
+ %  Average of energy squared configurations  %
+ % ------------------------------------------ %
+
+  
+Trans_dimE_squared_010 = (Trans_dimE_010 .* Trans_dimE_010);
+Trans_dimE_squared_020 = (Trans_dimE_020 .* Trans_dimE_020);
+Trans_dimE_squared_030 = (Trans_dimE_030 .* Trans_dimE_030);
+Trans_dimE_squared_040 = (Trans_dimE_040 .* Trans_dimE_040);
+Trans_dimE_squared_050 = (Trans_dimE_050 .* Trans_dimE_050);
+Trans_dimE_squared_060 = (Trans_dimE_060 .* Trans_dimE_060);
+Trans_dimE_squared_070 = (Trans_dimE_070 .* Trans_dimE_070);
+Trans_dimE_squared_080 = (Trans_dimE_080 .* Trans_dimE_080);
+Trans_dimE_squared_090 = (Trans_dimE_090 .* Trans_dimE_090);
+Trans_dimE_squared_10 = (Trans_dimE_10 .* Trans_dimE_10);
+
+ k = 1;
+ while (k < 42)
+    
+  Trans_AvgdimE_squared_010(k,:) = mean(Trans_dimE_squared_010(k,:));
+  Trans_AvgdimE_squared_020(k,:) = mean(Trans_dimE_squared_020(k,:));
+  Trans_AvgdimE_squared_030(k,:) = mean(Trans_dimE_squared_030(k,:));
+  Trans_AvgdimE_squared_040(k,:) = mean(Trans_dimE_squared_040(k,:));
+  Trans_AvgdimE_squared_050(k,:) = mean(Trans_dimE_squared_050(k,:));
+  Trans_AvgdimE_squared_060(k,:) = mean(Trans_dimE_squared_060(k,:));
+  Trans_AvgdimE_squared_070(k,:) = mean(Trans_dimE_squared_070(k,:));
+  Trans_AvgdimE_squared_080(k,:) = mean(Trans_dimE_squared_080(k,:));
+  Trans_AvgdimE_squared_090(k,:) = mean(Trans_dimE_squared_090(k,:));
+  Trans_AvgdimE_squared_10(k,:) = mean(Trans_dimE_squared_10(k,:));
+
+  k = k + 1;
+ 
+end
+
+AvgdimEsquared_010 = mean(Trans_AvgdimE_squared_010(:,1));
+AvgdimEsquared_020 = mean(Trans_AvgdimE_squared_020(:,1));
+AvgdimEsquared_030 = mean(Trans_AvgdimE_squared_030(:,1));
+AvgdimEsquared_040 = mean(Trans_AvgdimE_squared_040(:,1)); 
+AvgdimEsquared_050 = mean(Trans_AvgdimE_squared_050(:,1));
+AvgdimEsquared_060 = mean(Trans_AvgdimE_squared_060(:,1));
+AvgdimEsquared_070 = mean(Trans_AvgdimE_squared_070(:,1));
+AvgdimEsquared_080 = mean(Trans_AvgdimE_squared_080(:,1));
+AvgdimEsquared_090 = mean(Trans_AvgdimE_squared_090(:,1));
+AvgdimEsquared_10 = mean(Trans_AvgdimE_squared_10(:,1));
+
+ % --------------------------------------- %
+ %  Variance of Magnetisation calculation  %
+ % --------------------------------------- % 
+ 
+AvgM = [ AvgM_010; AvgM_020; AvgM_030; AvgM_040; AvgM_050; AvgM_060; AvgM_070; AvgM_080; AvgM_090; AvgM_10;];
+AvgM_squared = AvgM.*AvgM;
+Avg_Msquared = [ AvgMsquared_010; AvgMsquared_020; AvgMsquared_030; AvgMsquared_040; AvgMsquared_050; AvgMsquared_060; AvgMsquared_070;AvgMsquared_080; AvgMsquared_090; AvgMsquared_10;]; 
+
+VarM = Avg_Msquared - AvgM_squared;
+
+% ------------------------------- %
+% Variance of Energy calculation  %
+% ------------------------------- %
+
+AvgE = [ AvgEJ_010; AvgEJ_020; AvgEJ_030; AvgEJ_040; AvgEJ_050; AvgEJ_060; AvgEJ_070; AvgEJ_080; AvgEJ_090; AvgEJ_10;];
+AvgE_squared = AvgE.*AvgE;
+Avg_Esquared = [ AvgdimEsquared_010; AvgdimEsquared_020; AvgdimEsquared_030; AvgdimEsquared_040; AvgdimEsquared_050; AvgdimEsquared_060; AvgdimEsquared_070;AvgdimEsquared_080; AvgdimEsquared_090; AvgdimEsquared_10;]; 
+
+VarE = Avg_Esquared - AvgE_squared;
+
+% ------------------------------------- %
+%  Magnetic susceptibility calculation  %
+% ------------------------------------- % 
+ 
+XJ = 1600.*Beta.*VarM;
+
+% ------------------------------------ %
+%  Specific heat capacity calculation  %
+% ------------------------------------ % 
+
+zC_Kb = 1600.*(Beta.^2).*VarE;
+
+% ------------------------------- %
+% Magnetic susceptibility errors  %
+% ------------------------------- %
+
+z = 1;
+while (z <57)
+    AvgM_M010(z,:) = mean(NetMag_010(z,:));
+    AvgM_M020(z,:) = mean(NetMag_020(z,:));
+    AvgM_M030(z,:) = mean(NetMag_030(z,:));
+    AvgM_M040(z,:) = mean(NetMag_040(z,:));
+    AvgM_M050(z,:) = mean(NetMag_050(z,:));
+    AvgM_M060(z,:) = mean(NetMag_060(z,:));
+    AvgM_M070(z,:) = mean(NetMag_070(z,:));
+    AvgM_M080(z,:) = mean(NetMag_080(z,:));
+    AvgM_M090(z,:) = mean(NetMag_090(z,:));
+    AvgM_M10(z,:) = mean(NetMag_10(z,:));
+    z = z + 1;
+end
+
+
+AvgM_Msquared010 = NetMag_010 .* NetMag_010;
+AvgM_Msquared020 = NetMag_020 .* NetMag_020;
+AvgM_Msquared030 = NetMag_030 .* NetMag_030;
+AvgM_Msquared040 = NetMag_040 .* NetMag_040;
+AvgM_Msquared050 = NetMag_050 .* NetMag_050;
+AvgM_Msquared060 = NetMag_060 .* NetMag_060;
+AvgM_Msquared070 = NetMag_070 .* NetMag_070;
+AvgM_Msquared080 = NetMag_080 .* NetMag_080;
+AvgM_Msquared090 = NetMag_090 .* NetMag_090;
+AvgM_Msquared10 = NetMag_10 .* NetMag_10;
+
+z = 1;
+while (z <57)
+    AvgM_M2010(z,:) = mean(AvgM_Msquared010(z,:));
+    AvgM_M2020(z,:) = mean(AvgM_Msquared020(z,:));
+    AvgM_M2030(z,:) = mean(AvgM_Msquared030(z,:));
+    AvgM_M2040(z,:) = mean(AvgM_Msquared040(z,:));
+    AvgM_M2050(z,:) = mean(AvgM_Msquared050(z,:));
+    AvgM_M2060(z,:) = mean(AvgM_Msquared060(z,:));
+    AvgM_M2070(z,:) = mean(AvgM_Msquared070(z,:));
+    AvgM_M2080(z,:) = mean(AvgM_Msquared080(z,:));
+    AvgM_M2090(z,:) = mean(AvgM_Msquared090(z,:));
+    AvgM_M210(z,:) = mean(AvgM_Msquared10(z,:));
+    z = z + 1;
+end
+
+AvgM_M = [AvgM_M010,  AvgM_M020,  AvgM_M030,  AvgM_M040,  AvgM_M050,  AvgM_M060,  AvgM_M070,  AvgM_M080, AvgM_M090, AvgM_M10];  
+AvgM_M2 = [ AvgM_M2010 ,AvgM_M2020, AvgM_M2030, AvgM_M2040, AvgM_M2050, AvgM_M2060, AvgM_M2070, AvgM_M2080, AvgM_M2090, AvgM_M210];
+Avg_M_squared = AvgM_M .* AvgM_M;
+
+VarM_per_sweep = AvgM_M2 - Avg_M_squared;
+
+X_per_sweep010 = 1600.*0.1*VarM_per_sweep(:,1);
+X_per_sweep020 = 1600.*0.2*VarM_per_sweep(:,2);
+X_per_sweep030 = 1600.*0.3*VarM_per_sweep(:,3);
+X_per_sweep040 = 1600.*0.4*VarM_per_sweep(:,4);
+X_per_sweep050 = 1600.*0.5*VarM_per_sweep(:,5);
+X_per_sweep060 = 1600.*0.6*VarM_per_sweep(:,6);
+X_per_sweep070 = 1600.*0.7*VarM_per_sweep(:,7);
+X_per_sweep080 = 1600.*0.8*VarM_per_sweep(:,8);
+X_per_sweep090 = 1600.*0.9*VarM_per_sweep(:,9);
+X_per_sweep10 = 1600.*1*VarM_per_sweep(:,10);
+
+
+
+
+% ------------------------------- %
+%  Magnetic susceptibility plots  %
+% ------------------------------- %
+
+figure(6)
+errorbar(1./(4*Beta),XJ, X_std,'-*b','MarkerSize',3);
+hold on
+plot(T_Tc,XJ_MFT, '--r');
+hold off
+xlabel('T/Tc');
+ylabel('Magnetic susceptibility, X*J');
+ylim([0 40]);
+legend('Simulated results', 'mean field theory');
+
+
