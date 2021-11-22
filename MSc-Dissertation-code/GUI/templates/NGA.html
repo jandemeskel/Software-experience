@@ -1,0 +1,115 @@
+{% extends "Main_layout.html" %} 
+
+
+{% block forms %}
+<section class="jumbotron text-center">
+  <div class="container">
+      <div class="row">
+      <label for="formGroupExampleInput"> <h2> Muller -> NGA </h2> </label>
+      <br>
+      <br>
+      <form method = "POST" action = "" class="form-inline">
+              <div class="form-group mx-sm-3 mb-2">
+              <input name = "states" type="text" placeholder="States" class="form-control"></input>
+              <input name = "initial" type="text" placeholder="Initial" class="form-control"></input>
+              <input name = "alphabet" type="text" placeholder="Alphabet" class="form-control"></input>
+              <input name = "accepting" type="text" placeholder="Accepting" class="form-control"></input>
+              <input name = "transitions" type="text" placeholder="Transitions" class="form-control"></input>
+              </div>
+      </div>
+  </div>
+</section>
+
+<div class="row">
+<input name = "submit" type="submit" class="btn btn-primary btn-lg"> </input>
+</div>
+
+</form>
+
+{% endblock forms %}
+
+<!--   REPONSE BOX BLOCK  -->
+
+{% block response %}
+
+{% if NGAs %}
+
+{%for i in range(NGAs | length) %}
+
+<h3> A{{i}} </h3>
+<img src = "static\A{{i}}.png" style="max-width: 100%; height: auto;">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endfor %}
+
+{% endif %}
+
+{% endblock response %}
+
+<!--   OUTPUT BOX BLOCK  -->
+
+{% block output %}
+
+{% if invalid %}
+
+<h3> {{invalid}}</h3>
+
+{% endif %}
+
+{% if NGAs %}
+
+<h5> ...................................................................................... </h5>
+
+<h5> Non-determinisitc Generalized Buchi Formal Descriptions </h5>    
+
+<h5> ...................................................................................... </h5>
+
+<br>
+
+
+{%for i in range(NGAs | length) %}
+    <h3> A {{i}} </h3>
+    <br>
+
+    <h5>............ Set of states ............  </h5>
+
+    <h5> {{NGAs[i][0]}} </h5>
+
+    <h5> ............ Set of initial states ............</h5>
+
+    <h5> {{NGAs[i][1]}} </h5>
+
+    <h5>............ Computational alphabet ............ </h5>
+
+    <h5> {{NGAs[i][2]}} </h5>
+
+    <h5>............ State transitions ............ </h5>
+
+    {% for each_t in NGAs[i][3] %}
+      {% for j in range(each_t[1] | length) %}
+        <h5> {{each_t[0]}} ----> {{each_t[1][j]}} ---> {{each_t[2][j]}}</h5>
+      {%endfor%}
+    {%endfor%}
+
+    <h5> ............ State satisfying acceptence condition ............ </h5>
+
+
+    <h5> {{NGAs[i][4]}} </h5>
+  
+   
+    <h5> ...................................................................................... </h5>
+    <br> 
+
+{%endfor%}
+    
+                    
+{% endif %}
+
+{% endblock output %}
+
+

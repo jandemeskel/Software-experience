@@ -1,0 +1,143 @@
+{% extends "Main_layout.html" %} 
+
+{% block forms %}
+
+<h1> Formalisation of W-Automata </h1>
+
+
+<div class="jumbotron">
+    
+
+            <h2> Input stipulation </h2>
+            <br>
+
+            <p align="left"> (1) Enter all states, seperating each with a full stop and labelling them with Alphabetic only or an indexed tuple</p>
+            <p align="left"> (2) Enter initial states, only from the set of states entered above </p>
+            <p align="left"> (3) Enter the collection of accepting sets as a nested array, Where each array is a seperate set, and each state within a set is seperated by the boolean operator or, '|'. </p> 
+            <p align="left"> (4) Enter all characters within the computation alphabet, soley represented by numbers. </p>
+            <p align="left"> (5) Enter the transitions between states using the format [start state. [input characters]. [end states]], leaving a hypthen between each transition array. </p>
+        </div>               
+
+
+{% endblock forms %}
+
+
+<!--   REPONSE BOX BLOCK  -->
+
+{% block response %}
+<h5></h5>
+
+<h3> Example input </h3>
+<br>
+<h5> States : [A.B] </h5>
+<h5> Set containing all states  </h5>
+<br>
+<h5> Initial: [A]  </h5>
+<h5> Single initial state 'A'. </h5>
+<br>
+<h5> Alphabet: [0.1] </h5>
+<h5> Two letters, 0 and 1, within the computational alphabet. </h5>
+<br>
+<h5> Accepting: [[A|B]] </h5>
+<h5> A collection containing a single sets of accepting conditions, A and B.  </h5>
+<br>
+<h5> Transitions [A. [0|1]. [A|B]] - [B. [0|1]. [A|B]]  </h5>
+<h5> Transitions from states A & B. </h5>
+<h5>State transitions from state A to A and B via computing 0 and 1 respectively. </h5>
+<h5> State transitions from state B to A and B via computing 0 and 1 respectively.</h5>
+
+<!-- <img src="file:///C:/Users/john_/Desktop/MSc-Disseration/GUI/templates/Example_A0.png">
+<img src="file:///C:/Users/john_/Desktop/MSc-Disseration/GUI/templates/Example_A1.png"> -->
+<br>
+
+<h3> Example Graphical output </h3>
+<br>
+<h5> Accepting states are represented by nodes with a green outline.</h5>
+<h5> Initial states are represented by square shaped nodes. </h5>
+<br>
+<h5> Automata 0 </h5>
+<img src="static\Example_A0.png" style="max-width: 100%; height: auto;">
+<br>
+<h5> Automata 1 </h5>
+<img src="static\Example_A1.png" style="max-width: 100%; height: auto;">
+{% endblock response %}
+
+<!--   OUTPUT BOX BLOCK  -->
+
+{% block output %}
+
+
+<h3> Example Formal Description </h3>
+<br>
+<h5> ...................................................................................... </h5>
+
+<h5> Non-determinisitc Generalized Buchi Formal Descriptions </h5>    
+
+<h5> ...................................................................................... </h5>
+
+<br>
+<br>
+
+<h5> AUTOMATA 0 </h5>
+
+<h5>............ Set of states ............  </h5>
+
+<h5>[('A', 0), ('A', 1), ('B', 0)] </h5>
+
+<h5> ............ Set of initial states ............</h5>
+
+<h5>[('A', 0)] </h5>
+
+<h5>............ Computational alphabet ............ </h5>
+
+<h5>['0', '1'] </h5>
+
+<h5>............ State transitions ............ </h5>
+
+<h5> ('A', 0) -------- 0 --------> ('A', 0)</h5>
+<h5> ('A', 0) -------- 1 --------> ('B', 0) </h5>
+<h5> ('B', 0) -------- 0 --------> ('A', 0) </h5>
+<h5> ('B', 0) -------- 1 --------> ('B', 0)</h5>
+<h5> ('A', 0) -------- 0 --------> ('A', 1)</h5> 
+<h5> ('A', 1) -------- 0 --------> ('A', 1)</h5> 
+
+<h5> ............ State satisfying acceptence condition ............ </h5>
+
+
+<h5> [('A', 1)]</h5>
+
+<br>
+<br>
+
+<h5> AUTOMATA 1 </h5>
+
+<h5>............ Set of states ............  </h5>
+
+<h5>[('A', 0), ('B', 0), ('B', 1)] </h5>
+
+<h5> ............ Set of initial states ............</h5>
+
+<h5> [('A', 0)] </h5>
+
+<h5>............ Computational alphabet ............ </h5>
+
+<h5>['0', '1'] </h5>
+
+<h5>............ State transitions ............ </h5>
+
+<h5> ('A', 0) -------- 0 --------> ('A', 0)</h5>
+<h5> ('A', 0) -------- 1 --------> ('B', 0) </h5>
+<h5> ('B', 0) -------- 0 --------> ('A', 0) </h5>
+<h5> ('B', 0) -------- 1 --------> ('B', 0)</h5>
+<h5> ('B', 0) -------- 1 --------> ('B', 1)</h5> 
+<h5> ('B', 1) -------- 1 --------> ('B', 1)</h5> 
+
+<h5> ............ State satisfying acceptence condition ............ </h5>
+
+
+<h5>  [('B', 1)]</h5>
+
+
+                    
+{% endblock output %}
+

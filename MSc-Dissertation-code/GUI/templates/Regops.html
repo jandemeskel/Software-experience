@@ -1,0 +1,167 @@
+{% extends "Main_layout.html" %} 
+
+
+{% block forms %}
+<section class="jumbotron text-center">
+    <div class="container">
+        <label for="formGroupExampleInput"> <h2> Regular operations of w-languages </h2> </label>
+      <br>
+      <br>
+
+            <form method = "POST" action = "">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label > <h3> Automata 1 </h3></label>
+                        <input name = "states_one" type="text" placeholder="States" class="form-control"> </input>
+                        <input name = "initial_one" type="text" placeholder="Initial" class="form-control"> </input>
+                        <input name = "alphabet_one" type="text" placeholder="Alphabet" class="form-control"> </input>
+                        <input name = "accepting_one" type="text" placeholder="Accepting" class="form-control"> </input>
+                        <input name = "transitions_one" type="text" placeholder="Transitions" class="form-control"> </input>
+                    </div>
+            
+                    <div class="form-group col-md-6">
+                        <label > <h3> Automata 2 </h3></label>
+                        <input name = "states_two" type="text" placeholder="States" class="form-control"> </input>
+                        <input name = "initial_two" type="text" placeholder="Initial" class="form-control"> </input>
+                        <input name = "alphabet_two" type="text" placeholder="Alphabet" class="form-control"> </input>
+                        <input name = "accepting_two" type="text" placeholder="Accepting" class="form-control"> </input>
+                        <input name = "transitions_two" type="text" placeholder="Transitions" class="form-control"> </input>
+                    </div>
+                </div>
+</section>
+
+    <div class="row">
+        <input value = "Union" name = "union" type="submit" class="btn btn-primary btn-lg">  </input>
+    </div>
+    <div class="row">
+            <input value = "Intersection"  name = "intersection" type="submit" class="btn btn-primary btn-lg"></input>
+    </div>
+
+</form>
+
+{% endblock forms %}
+
+
+
+<!--   REPONSE BOX BLOCK  -->
+
+{% block response %}
+
+{% if joint_construction %}
+
+<img src="static\A0.png" style="max-width: 100%; height: auto;">
+
+{%endif%}
+
+
+{% if intersect %}
+
+<img src="static\A0.png" style="max-width: 100%; height: auto;">
+
+{%endif%}
+
+{% endblock response %}
+
+<!--   OUTPUT BOX BLOCK  -->
+
+{% block output %}
+
+
+{% if invalid %}
+
+<h3> {{invalid}}</h3>
+
+{% endif %}
+
+{% if joint_construction %}
+
+<h5> ...................................................................................... </h5>
+
+<h5>  Construction describing the language defined by the union of two w-regular languages </h5>    
+
+<h5> ...................................................................................... </h5>
+
+<br>
+
+            <h5>............ Set of states ............  </h5>
+
+            <h5> {{joint_construction[0]}} </h5>
+
+            <h5> ............ Set of initial states ............</h5>
+
+            <h5> {{joint_construction[1]}} </h5>
+
+            <h5>............ Computational alphabet ............ </h5>
+
+            <h5> {{joint_construction[2]}} </h5>
+
+            <h5>............ State transitions ............ </h5>
+
+            {% for transitions in joint_construction[3] %}
+
+                    {% for j in range(transitions[1] | length) %}
+                        <h5> 
+                            {{transitions[0]}} ----> {{transitions[1][j]}} ---> {{transitions[2]}}
+                            <br>
+                        </h5>
+                    {%endfor%}
+            {%endfor%}
+
+
+            <h5> ............ State satisfying acceptence condition ............ </h5>
+
+
+            <h5> {{joint_construction[4]}} </h5>
+        
+        
+            <h5> ...................................................................................... </h5>
+            <br> 
+
+{% endif %}
+
+{% if intersect %}
+
+<h5> ...................................................................................... </h5>
+
+<h5>  Construction describing the language defined by the intersection of two w-regular languages </h5>    
+
+<h5> ...................................................................................... </h5>
+
+<br>
+
+            <h5>............ Set of states ............  </h5>
+
+            <h5> {{intersect[0]}} </h5>
+
+            <h5> ............ Set of initial states ............</h5>
+
+            <h5> {{intersect[1]}} </h5>
+
+            <h5>............ Computational alphabet ............ </h5>
+
+            <h5> {{intersect[2]}} </h5>
+
+            <h5>............ State transitions ............ </h5>
+
+            {% for transitions in intersect[3] %}
+
+                    {% for j in range(transitions[1] | length) %}
+                        <h5> 
+                            {{transitions[0]}} ----> {{transitions[1][j]}} ---> {{transitions[2]}}
+                            <br>
+                        </h5>
+                    {%endfor%}
+            {%endfor%}
+
+
+            <h5> ............ State satisfying acceptence condition ............ </h5>
+
+
+            <h5> {{intersect[4]}} </h5>
+        
+        
+            <h5> ...................................................................................... </h5>
+            <br> 
+{% endif %}
+
+{% endblock output %}
